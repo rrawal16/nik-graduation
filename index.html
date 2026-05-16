@@ -66,10 +66,11 @@
 
     /* Hero */
     .hero {
-      padding: 5rem 1.5rem 4rem;
+      padding: 3rem 1.5rem 2.5rem;
       text-align: center;
       position: relative;
     }
+    .gallery-top { padding-top: 2rem; }
     .kicker {
       display: inline-flex;
       align-items: center;
@@ -164,11 +165,53 @@
       box-shadow: 0 8px 20px rgba(0, 50, 98, 0.25);
     }
 
+    /* Gallery */
+    .gallery {
+      margin: 0;
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+              mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+      position: relative;
+    }
+    .gallery-track {
+      display: flex;
+      gap: 1rem;
+      width: max-content;
+      animation: scroll-x 80s linear infinite;
+    }
+    .gallery:hover .gallery-track { animation-play-state: paused; }
+    .gallery figure {
+      margin: 0;
+      flex-shrink: 0;
+      height: 240px;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 50, 98, 0.18);
+      border: 3px solid #fff;
+      transition: transform 0.3s ease;
+      background: #fff;
+    }
+    .gallery figure:hover { transform: scale(1.04) rotate(-1deg); }
+    .gallery img {
+      height: 100%;
+      width: auto;
+      display: block;
+      object-fit: cover;
+      image-orientation: from-image;
+    }
+    @keyframes scroll-x {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    @media (max-width: 600px) {
+      .gallery figure { height: 180px; border-radius: 14px; }
+    }
+
     /* Main */
     main {
       max-width: 880px;
       margin: 0 auto;
-      padding: 5rem 1.5rem 5rem;
+      padding: 1.5rem 1.5rem 4rem;
     }
 
     /* Day cards */
@@ -358,6 +401,41 @@
   <div class="blob blob-4"></div>
 
   <div class="content">
+    <div class="gallery gallery-top" aria-label="Photos of Nik">
+      <div class="gallery-track">
+        <figure><img src="photos/photo-01.jpg" alt="" loading="lazy" /></figure>
+        <figure><img src="photos/photo-02.jpg" alt="" loading="lazy" /></figure>
+        <figure><img src="photos/photo-03.jpg" alt="" loading="lazy" /></figure>
+        <figure><img src="photos/photo-04.jpg" alt="" loading="lazy" /></figure>
+        <figure><img src="photos/photo-05.jpg" alt="" loading="lazy" /></figure>
+        <figure><img src="photos/photo-06.jpg" alt="" loading="lazy" /></figure>
+        <figure><img src="photos/photo-07.jpg" alt="" loading="lazy" /></figure>
+        <figure><img src="photos/photo-08.jpg" alt="" loading="lazy" /></figure>
+        <figure><img src="photos/photo-09.jpg" alt="" loading="lazy" /></figure>
+        <figure><img src="photos/photo-10.jpg" alt="" loading="lazy" /></figure>
+        <figure><img src="photos/photo-11.jpg" alt="" loading="lazy" /></figure>
+        <figure><img src="photos/photo-12.jpg" alt="" loading="lazy" /></figure>
+        <figure><img src="photos/photo-13.jpg" alt="" loading="lazy" /></figure>
+        <figure><img src="photos/photo-14.jpg" alt="" loading="lazy" /></figure>
+        <figure><img src="photos/photo-15.jpg" alt="" loading="lazy" /></figure>
+        <figure aria-hidden="true"><img src="photos/photo-01.jpg" alt="" loading="lazy" /></figure>
+        <figure aria-hidden="true"><img src="photos/photo-02.jpg" alt="" loading="lazy" /></figure>
+        <figure aria-hidden="true"><img src="photos/photo-03.jpg" alt="" loading="lazy" /></figure>
+        <figure aria-hidden="true"><img src="photos/photo-04.jpg" alt="" loading="lazy" /></figure>
+        <figure aria-hidden="true"><img src="photos/photo-05.jpg" alt="" loading="lazy" /></figure>
+        <figure aria-hidden="true"><img src="photos/photo-06.jpg" alt="" loading="lazy" /></figure>
+        <figure aria-hidden="true"><img src="photos/photo-07.jpg" alt="" loading="lazy" /></figure>
+        <figure aria-hidden="true"><img src="photos/photo-08.jpg" alt="" loading="lazy" /></figure>
+        <figure aria-hidden="true"><img src="photos/photo-09.jpg" alt="" loading="lazy" /></figure>
+        <figure aria-hidden="true"><img src="photos/photo-10.jpg" alt="" loading="lazy" /></figure>
+        <figure aria-hidden="true"><img src="photos/photo-11.jpg" alt="" loading="lazy" /></figure>
+        <figure aria-hidden="true"><img src="photos/photo-12.jpg" alt="" loading="lazy" /></figure>
+        <figure aria-hidden="true"><img src="photos/photo-13.jpg" alt="" loading="lazy" /></figure>
+        <figure aria-hidden="true"><img src="photos/photo-14.jpg" alt="" loading="lazy" /></figure>
+        <figure aria-hidden="true"><img src="photos/photo-15.jpg" alt="" loading="lazy" /></figure>
+      </div>
+    </div>
+
     <header class="hero">
       <span class="kicker">UC Berkeley · Class of 2026</span>
       <h1 class="title">Nik's <em>Graduation</em> Week</h1>
@@ -459,7 +537,7 @@
             <span class="time tbd">TBD</span>
             <div>
               <p class="activity-title">Alisha arrives</p>
-              <p class="activity-detail">She'll BART to Civic Center — we'll pick her up there</p>
+              <p class="activity-detail">We'll pick her up from Civic Center or North Berkeley BART — depending on her timing</p>
             </div>
           </li>
           <li>
@@ -553,7 +631,7 @@
           <li>
             <span class="time">Evening</span>
             <div>
-              <p class="activity-title">Dinner with Sangeeta &amp; Kanishk</p>
+              <p class="activity-title">Dinner</p>
             </div>
           </li>
         </ul>
