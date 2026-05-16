@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nik's Graduation Week · May 20–25</title>
+  <meta name="description" content="Family itinerary for Nik's UC Berkeley doctoral graduation, May 20–25." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --berkeley-blue: #003262;
+      --berkeley-deep: #001f3f;
+      --california-gold: #FDB515;
+      --gold-warm: #ff9a3c;
+      --coral: #ff5a7a;
+      --teal: #2dd4bf;
+      --lilac: #a78bfa;
+      --cream: #fff8ec;
+      --ink: #14141f;
+      --muted: #6b6b7b;
+      --rule: rgba(0, 50, 98, 0.1);
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--ink);
+      background: var(--cream);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Background blobs */
+    .blob {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.55;
+      pointer-events: none;
+      z-index: 0;
+      animation: float 18s ease-in-out infinite;
+    }
+    .blob-1 { width: 520px; height: 520px; top: -120px; left: -150px;
+      background: radial-gradient(circle, var(--california-gold), transparent 70%); }
+    .blob-2 { width: 480px; height: 480px; top: 30%; right: -180px;
+      background: radial-gradient(circle, var(--coral), transparent 70%);
+      animation-delay: -6s; }
+    .blob-3 { width: 600px; height: 600px; bottom: -200px; left: 20%;
+      background: radial-gradient(circle, var(--lilac), transparent 70%);
+      animation-delay: -12s; }
+    .blob-4 { width: 380px; height: 380px; top: 65%; left: -100px;
+      background: radial-gradient(circle, var(--teal), transparent 70%);
+      animation-delay: -9s; }
+    @keyframes float {
+      0%, 100% { transform: translate(0,0) scale(1); }
+      33%      { transform: translate(40px, -30px) scale(1.08); }
+      66%      { transform: translate(-25px, 35px) scale(0.95); }
+    }
+
+    .content { position: relative; z-index: 1; }
+
+    /* Hero */
+    .hero {
+      padding: 5rem 1.5rem 4rem;
+      text-align: center;
+      position: relative;
+    }
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(0, 50, 98, 0.08);
+      color: var(--berkeley-blue);
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(0, 50, 98, 0.12);
+    }
+    .kicker::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--california-gold);
+      box-shadow: 0 0 0 4px rgba(253, 181, 21, 0.25);
+    }
+    h1.title {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-weight: 800;
+      font-size: clamp(3rem, 9vw, 6.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.035em;
+      margin: 0 auto 1.5rem;
+      max-width: 14ch;
+      background: linear-gradient(120deg, var(--berkeley-blue) 0%, var(--berkeley-blue) 30%, var(--coral) 55%, var(--california-gold) 85%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: shine 8s linear infinite;
+    }
+    @keyframes shine {
+      0%   { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+    h1.title em {
+      font-style: italic;
+      font-weight: 500;
+    }
+    .tagline {
+      font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+      color: var(--ink);
+      font-weight: 500;
+      margin: 0 auto 1.25rem;
+      max-width: 32ch;
+      line-height: 1.4;
+    }
+    .tagline strong { color: var(--coral); font-weight: 700; }
+    .dates {
+      font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+      color: var(--berkeley-blue);
+      font-weight: 600;
+      margin: 0;
+      letter-spacing: 0.02em;
+    }
+    .dates .sep { color: var(--california-gold); margin: 0 0.5rem; }
+
+    /* Day nav */
+    .daynav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      max-width: 900px;
+      margin: 2.5rem auto 0;
+      padding: 0 1.5rem;
+    }
+    .daynav a {
+      background: #fff;
+      color: var(--berkeley-blue);
+      text-decoration: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      line-height: 1;
+      border: 1.5px solid var(--berkeley-blue);
+      transition: all 0.2s ease;
+    }
+    .daynav a:hover {
+      background: var(--berkeley-blue);
+      color: var(--california-gold);
+      transform: translateY(-2px) rotate(-1deg);
+      box-shadow: 0 8px 20px rgba(0, 50, 98, 0.25);
+    }
+
+    /* Main */
+    main {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 5rem 1.5rem 5rem;
+    }
+
+    /* Day cards */
+    .day {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 28px;
+      padding: 2.5rem 2rem;
+      margin-bottom: 1.75rem;
+      box-shadow: 0 10px 40px rgba(0, 50, 98, 0.08);
+      scroll-margin-top: 1.5rem;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .day:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 50px rgba(0, 50, 98, 0.14);
+    }
+    .day::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 6px;
+      background: linear-gradient(90deg, var(--berkeley-blue), var(--california-gold));
+    }
+    .day:nth-child(2)::before { background: linear-gradient(90deg, var(--berkeley-blue), var(--coral)); }
+    .day:nth-child(3)::before { background: linear-gradient(90deg, var(--coral), var(--california-gold)); }
+    .day:nth-child(4)::before { background: linear-gradient(90deg, var(--california-gold), var(--teal)); }
+    .day:nth-child(5)::before { background: linear-gradient(90deg, var(--teal), var(--lilac)); }
+    .day:nth-child(6)::before { background: linear-gradient(90deg, var(--lilac), var(--berkeley-blue)); }
+
+    .day-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+      flex-wrap: wrap;
+    }
+    .day-header h2 {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2rem, 5vw, 2.75rem);
+      color: var(--berkeley-blue);
+      margin: 0;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+    .day-header h2 .date-num {
+      color: var(--california-gold);
+    }
+    .subdate {
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 600;
+      background: rgba(0, 50, 98, 0.06);
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+    }
+
+    .activities {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .activities li {
+      display: grid;
+      grid-template-columns: 7rem 1fr;
+      gap: 1.25rem;
+      padding: 1rem 0;
+      border-bottom: 1px dashed var(--rule);
+      transition: padding 0.2s ease;
+    }
+    .activities li:last-child { border-bottom: 0; }
+    .activities li:hover { padding-left: 0.5rem; }
+    .time {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-weight: 700;
+      color: var(--berkeley-blue);
+      font-variant-numeric: tabular-nums;
+      font-size: 1.05rem;
+      letter-spacing: -0.01em;
+    }
+    .time.tbd {
+      color: var(--coral);
+      font-style: italic;
+      font-weight: 600;
+    }
+    .activity-title {
+      font-weight: 600;
+      color: var(--ink);
+      font-size: 1.05rem;
+      margin: 0 0 0.25rem;
+    }
+    .activity-detail {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin: 0;
+    }
+    .activity-detail + .activity-detail { margin-top: 0.25rem; }
+
+    /* Open day */
+    .openday {
+      background: linear-gradient(135deg, rgba(253, 181, 21, 0.15), rgba(167, 139, 250, 0.15));
+      border: 1px solid rgba(253, 181, 21, 0.4);
+      padding: 1.5rem 1.75rem;
+      border-radius: 18px;
+    }
+    .openday p {
+      margin: 0 0 0.75rem;
+      font-weight: 500;
+      color: var(--berkeley-blue);
+    }
+    .openday ul {
+      margin: 0;
+      padding-left: 1.2rem;
+      color: var(--ink);
+    }
+    .openday li {
+      margin: 0.35rem 0;
+      font-size: 0.98rem;
+    }
+    .openday li::marker { color: var(--coral); }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 3rem 1.5rem 4rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    footer .gobears {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-weight: 800;
+      font-size: 1.5rem;
+      letter-spacing: 0.06em;
+      background: linear-gradient(90deg, var(--berkeley-blue), var(--coral), var(--california-gold));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin: 0 0 0.5rem;
+    }
+    footer p { margin: 0; }
+
+    /* Reveal on scroll */
+    .day {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: reveal 0.7s ease forwards;
+    }
+    .day:nth-child(1) { animation-delay: 0.05s; }
+    .day:nth-child(2) { animation-delay: 0.15s; }
+    .day:nth-child(3) { animation-delay: 0.25s; }
+    .day:nth-child(4) { animation-delay: 0.35s; }
+    .day:nth-child(5) { animation-delay: 0.45s; }
+    .day:nth-child(6) { animation-delay: 0.55s; }
+    @keyframes reveal {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      .hero { padding: 3.5rem 1.25rem 2.5rem; }
+      main { padding: 2.5rem 1rem 3rem; }
+      .day { padding: 1.75rem 1.25rem; border-radius: 22px; }
+      .activities li {
+        grid-template-columns: 1fr;
+        gap: 0.25rem;
+      }
+      .time { font-size: 0.95rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .blob, h1.title, .day { animation: none !important; }
+      .day { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+  <div class="blob blob-4"></div>
+
+  <div class="content">
+    <header class="hero">
+      <span class="kicker">UC Berkeley · Class of 2026</span>
+      <h1 class="title">Nik's <em>Graduation</em> Week</h1>
+      <p class="tagline">We are so excited to celebrate <strong>Dr. Niklas Lauffer!</strong></p>
+      <p class="dates">Wed, May 20<span class="sep">→</span>Mon, May 25</p>
+      <nav class="daynav" aria-label="Jump to day">
+        <a href="#wed">Wed 20</a>
+        <a href="#thu">Thu 21</a>
+        <a href="#fri">Fri 22</a>
+        <a href="#sat">Sat 23</a>
+        <a href="#sun">Sun 24</a>
+        <a href="#mon">Mon 25</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="day" id="wed">
+        <div class="day-header">
+          <h2>Wed <span class="date-num">20</span></h2>
+          <span class="subdate">Arrivals</span>
+        </div>
+        <ul class="activities">
+          <li>
+            <span class="time">1:05 PM</span>
+            <div>
+              <p class="activity-title">Scott &amp; Christiane arrive</p>
+              <p class="activity-detail">SFO</p>
+            </div>
+          </li>
+          <li>
+            <span class="time">7:50 PM</span>
+            <div>
+              <p class="activity-title">Annika arrives</p>
+              <p class="activity-detail">Oakland (OAK) — we'll pick her up</p>
+            </div>
+          </li>
+          <li>
+            <span class="time">10:42 PM</span>
+            <div>
+              <p class="activity-title">Vandana &amp; Rajiv arrive</p>
+              <p class="activity-detail">SFO — driving rental car to the Airbnb</p>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section class="day" id="thu">
+        <div class="day-header">
+          <h2>Thu <span class="date-num">21</span></h2>
+          <span class="subdate">Graduation Day</span>
+        </div>
+        <ul class="activities">
+          <li>
+            <span class="time">9:00 AM</span>
+            <div>
+              <p class="activity-title">Nik's graduation ceremony</p>
+              <p class="activity-detail">Zellerbach Auditorium, UC Berkeley</p>
+              <p class="activity-detail">Parking: Lower Sproul Garage or Telegraph–Channing garage. Daytime campus parking is also available for $12.</p>
+            </div>
+          </li>
+          <li>
+            <span class="time">After</span>
+            <div>
+              <p class="activity-title">Reception</p>
+              <p class="activity-detail">Large tent in Lower Sproul Plaza, across from the ceremony venue</p>
+            </div>
+          </li>
+          <li>
+            <span class="time">Midday</span>
+            <div>
+              <p class="activity-title">Back to our apartment</p>
+              <p class="activity-detail">1708 Delaware Street — drinks, snacks, light lunch, and cake</p>
+            </div>
+          </li>
+          <li>
+            <span class="time">6:00 PM</span>
+            <div>
+              <p class="activity-title">Dinner at Great China</p>
+              <p class="activity-detail">Reservation for 9</p>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section class="day" id="fri">
+        <div class="day-header">
+          <h2>Fri <span class="date-num">22</span></h2>
+          <span class="subdate">Day in San Francisco</span>
+        </div>
+        <ul class="activities">
+          <li>
+            <span class="time">6:00 AM</span>
+            <div>
+              <p class="activity-title">Lars departs</p>
+              <p class="activity-detail">SFO</p>
+            </div>
+          </li>
+          <li>
+            <span class="time tbd">TBD</span>
+            <div>
+              <p class="activity-title">Alisha arrives</p>
+              <p class="activity-detail">She'll BART to Civic Center — we'll pick her up there</p>
+            </div>
+          </li>
+          <li>
+            <span class="time">Day</span>
+            <div>
+              <p class="activity-title">San Francisco</p>
+              <p class="activity-detail">Golden Gate Park → Twin Peaks → lunch in Hayes Valley</p>
+              <p class="activity-detail">If time allows: the Presidio neighborhood</p>
+            </div>
+          </li>
+          <li>
+            <span class="time">6:30 PM</span>
+            <div>
+              <p class="activity-title">Dinner at Pizzeria De Laura</p>
+              <p class="activity-detail">Berkeley · reservation for 8</p>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section class="day" id="sat">
+        <div class="day-header">
+          <h2>Sat <span class="date-num">23</span></h2>
+          <span class="subdate">Sonoma</span>
+        </div>
+        <ul class="activities">
+          <li>
+            <span class="time">Morning</span>
+            <div>
+              <p class="activity-title">Pick up bikes</p>
+              <p class="activity-detail">Sonoma Adventures — need to call ahead</p>
+            </div>
+          </li>
+          <li>
+            <span class="time">12:00 PM</span>
+            <div>
+              <p class="activity-title">Brunch at Sonoma Farmhouse</p>
+              <p class="activity-detail">Reservation for 8</p>
+            </div>
+          </li>
+          <li>
+            <span class="time">2:00 PM</span>
+            <div>
+              <p class="activity-title">Wine tasting at Gundlach Bundschu</p>
+              <p class="activity-detail">Reservation for 8</p>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section class="day" id="sun">
+        <div class="day-header">
+          <h2>Sun <span class="date-num">24</span></h2>
+          <span class="subdate">Half Moon Bay</span>
+        </div>
+        <ul class="activities">
+          <li>
+            <span class="time">7:15 AM</span>
+            <div>
+              <p class="activity-title">Annika departs</p>
+              <p class="activity-detail">OAK</p>
+            </div>
+          </li>
+          <li>
+            <span class="time tbd">TBD</span>
+            <div>
+              <p class="activity-title">Alisha departs</p>
+              <p class="activity-detail">SFO</p>
+            </div>
+          </li>
+          <li>
+            <span class="time">11:15 AM</span>
+            <div>
+              <p class="activity-title">Fitzgerald Marine Reserve</p>
+              <p class="activity-detail">About an hour drive to Half Moon Bay. Low tide 12:08–12:18.</p>
+            </div>
+          </li>
+          <li>
+            <span class="time">After</span>
+            <div>
+              <p class="activity-title">Lunch at a sandwich shop</p>
+            </div>
+          </li>
+          <li>
+            <span class="time">Afternoon</span>
+            <div>
+              <p class="activity-title">Hike: Montara Mountain Loop</p>
+              <p class="activity-detail">2.4 miles</p>
+            </div>
+          </li>
+          <li>
+            <span class="time">Evening</span>
+            <div>
+              <p class="activity-title">Dinner with Sangeeta &amp; Kanishk</p>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section class="day" id="mon">
+        <div class="day-header">
+          <h2>Mon <span class="date-num">25</span></h2>
+          <span class="subdate">Open day</span>
+        </div>
+        <div class="openday">
+          <p>No pre-planned activities — some ideas to choose from:</p>
+          <ul>
+            <li>Coffee &amp; park hang — Fournée, La Farine, or Hidden Café</li>
+            <li>Berkeley Rose Garden or the Botanical Garden</li>
+            <li>Lake Merritt</li>
+            <li>Redwood trails in Oakland</li>
+            <li>A hike, if folks are up for it</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p class="gobears">Go Bears</p>
+      <p>So glad you're here to celebrate with us.</p>
+    </footer>
+  </div>
+</body>
+</html>
